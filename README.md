@@ -49,47 +49,23 @@
 ### 기본 세팅:
 
 ```
-배경: 첫 번째 디자인의 첫 번째 레이아웃 (검은색 배경)
-텍스트 위치: 가운데 위
+배경: 첫 번째 마스터 슬라이드의 첫 번째 레이아웃 (검은색 배경)
+텍스트 위치: 가운데 위 (마진 값을 변경하면 위에서부터의 거리를 설정할 수 있음)
 텍스트 정렬: 가운데 정렬
 폰트 크기: 28
-폰트: HY견명조 (영어와 한글을 개별로 설정해야 합니다.)
+폰트: 맑은 고딕
 폰트 색상: 흰색 [RGB(255, 255, 255)]
-볼드 비활성화
-텍스트 그림자 추가
+글씨체 굵게 활성화
+그림자 활성화
 ```
 
-기본 세팅을 바꾸시려면 VBA 매크로를 편집하여야 합니다.
+기본 세팅을 바꾸시려면 해당 변수 부분을 재설정하면 됩니다.
 
 ```
-    With myShape
-        sentence(i) = Replace(sentence(i), "/", vbNewLine)
-        With .TextFrame
-            .TextRange.ParagraphFormat.Alignment = ppAlignCenter
-            .TextRange.Text = sentence(i)
-
-            ' 텍스트 프레임의 상단 여백을 설정합니다.
-            .MarginTop = 0
-            With .TextRange.Font
-
-                ' 폰트 크기를 설정합니다.
-                .Size = 28
-
-                ' 영어의 폰트를 'HY견명조'로 설정합니다.
-                .Name = "HY견명조"
-
-                ' 한글의 폰트를 'HY견명조'로 설정합니다.
-                .NameFarEast = "HY견명조"
-
-                ' 폰트 색상을 흰색으로 설정합니다.
-                .Color.RGB = RGB(255, 255, 255)
-
-                ' 볼드체를 비활성화 합니다.
-                .Bold = False
-
-                ' 텍스트에 그림자를 추가합니다.
-                .Shadow = True
-            End With
-        End With
-    End With
+    ' 폰트 설정값 초기화
+    fontName = "맑은 고딕"
+    fontSize = 28
+    fontColor = RGB(255, 255, 255) ' white
+    fontBold = msoTrue
+    fontShadow = msoTrue
 ```
